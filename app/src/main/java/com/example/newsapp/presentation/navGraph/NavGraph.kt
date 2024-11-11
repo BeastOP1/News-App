@@ -6,13 +6,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import com.example.newsapp.MainViewModel
+import com.example.newsapp.presentation.auth.AuthScreen
 import com.example.newsapp.presentation.onBoarding.OnBoardingViewModel
 import com.example.newsapp.presentation.news_navigator.NewsNavigator
 import com.example.newsapp.presentation.onBoarding.components.OnboardingScreen
 
 
 @Composable
-fun NavGraph( startDestination: String) {
+fun NavGraph(startDestination: String) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = startDestination) {

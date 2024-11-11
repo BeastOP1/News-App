@@ -14,30 +14,30 @@ import javax.inject.Inject
 @HiltViewModel
 class BookmarkViewModel @Inject constructor(
     private val useCases: NewsUseCases
-): ViewModel()  {
+): ViewModel() {
 
 
     private val _state = mutableStateOf(BookmarkState())
-    val state : State<BookmarkState> =_state
+    val state: State<BookmarkState> = _state
 
 
     init {
         getArticles()
     }
-    private  fun getArticles(){
 
-        try{
+    private fun getArticles() {
+
+        try {
             useCases.selectArticles().onEach {
 
                 _state.value = _state.value.copy(
                     articles = it.asReversed()
                 )
             }.launchIn(viewModelScope)
-        }catch (e:Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
-
 
 
     // Function to toggle bookmark state of an article
@@ -58,15 +58,13 @@ class BookmarkViewModel @Inject constructor(
         }
     }
 
+    fun isBookMarked(article: Article): Boolean {
 
-
-
-
-    fun isBookmarked(article: Article): Boolean {
-        return _state.value.bookmarkedArticles.contains(article)
+         val status: Boolean = _state.value.bookmarkedArticles.contains(article)
+        return status
     }
-
-
-
-
 }
+
+
+
+

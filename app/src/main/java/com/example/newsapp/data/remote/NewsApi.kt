@@ -1,18 +1,19 @@
 package com.example.newsapp.data.remote
 
 import com.example.newsapp.data.remote.dto.NewsResponse
+import com.example.newsapp.domain.model.Source
 import com.example.newsapp.ui.theme.utils.Constants.API_KEY
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface NewsApi {
 
     @GET("everything")
     suspend fun getNews(
-
         @Query("page") page: Int,
         @Query("sources") source: String,
-        @Query("apiKey") apiKey : String ="d68d4bfc13e844e596b47016df08f8b0"
+        @Query("apiKey") apiKey : String =API_KEY
     ): NewsResponse
 
 
@@ -23,6 +24,26 @@ interface NewsApi {
         @Query("apiKey") apiKey: String = API_KEY,
         @Query("page") page: Int
     ): NewsResponse
+
+    @GET("top-headlines/")
+    suspend fun categoryNews(
+        @Query("page") page: Int,
+        @Query("sources") source: String? = null,
+        @Query("apiKey") apiKey: String =API_KEY,
+        @Query("country") country : String? = null,
+        @Query("category") category: String?= null,
+    ): NewsResponse
+
+
+    @GET("top-headlines")
+    suspend fun headlineNews(
+        @Query("page") page: Int,
+        @Query("sources") source: String? = null,
+        @Query("apiKey") apiKey: String = API_KEY,
+        @Query("country") country: String,
+        @Query("category") category: String? = null ,
+    ): NewsResponse
+
 }
 
  //1

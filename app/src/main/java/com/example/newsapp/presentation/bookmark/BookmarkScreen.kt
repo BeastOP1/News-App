@@ -26,7 +26,7 @@ fun BookMarkScreen(
 ) {
 
     Column(
-        modifier = Modifier.background(if(isSystemInDarkTheme())Color.Black else Color.White)
+        modifier = Modifier
             .fillMaxSize()
             .statusBarsPadding()
             .padding(
@@ -47,7 +47,7 @@ fun BookMarkScreen(
         Spacer(modifier = Modifier.height(MediumPadding1))
 
 
-        ArticleList(articles = state.articles, onClick = {
+        ArticleList(modifier = Modifier, articles = state.articles, onClick = {
             navigateToDetails(it)
         })
     }

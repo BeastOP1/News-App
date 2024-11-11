@@ -15,6 +15,8 @@ import com.example.newsapp.domain.usecase.app_entry.AppEntryUseCases
 import com.example.newsapp.domain.usecase.app_entry.ReadAppEntry
 import com.example.newsapp.domain.usecase.app_entry.SaveAppEntry
 import com.example.newsapp.domain.usecase.news.DeleteArticle
+import com.example.newsapp.domain.usecase.news.GetCategoryNews
+import com.example.newsapp.domain.usecase.news.GetHeadlineNews
 import com.example.newsapp.domain.usecase.news.GetNews
 import com.example.newsapp.domain.usecase.news.InsertArticle
 import com.example.newsapp.domain.usecase.news.Select_Article
@@ -22,6 +24,7 @@ import com.example.newsapp.domain.usecase.news.SearchNews
 import com.example.newsapp.domain.usecase.news.SelectArticles
 import com.example.newsapp.ui.theme.utils.Constants.BASE_URL
 import com.example.newsapp.ui.theme.utils.Constants.NEWS_DATABASE_NAME
+import com.google.firebase.Firebase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -79,7 +82,9 @@ object AppModule {
             insertArticle = InsertArticle(newsRepository = newsRepository),
             deleteArticle = DeleteArticle(newsRepository = newsRepository),
             selectArticles = SelectArticles(newsRepository = newsRepository),
-            selectArticle = Select_Article(newsRepository = newsRepository)
+            selectArticle = Select_Article(newsRepository = newsRepository),
+            getCategoryNews = GetCategoryNews(newsRepository = newsRepository),
+            getHeadlineNews = GetHeadlineNews(newsRepository = newsRepository)
         )
     }
 

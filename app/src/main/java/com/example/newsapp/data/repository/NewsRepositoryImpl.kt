@@ -3,6 +3,8 @@ package com.example.newsapp.data.repository
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.newsapp.data.local.NewsDao
+import com.example.newsapp.data.remote.CategoryPagingSource
+import com.example.newsapp.data.remote.HeadlineNewsPagingSource
 import com.example.newsapp.data.remote.NewsApi
 import com.example.newsapp.data.remote.NewsPagingSource
 import com.example.newsapp.data.remote.SearchNewsPagingSource
@@ -11,12 +13,12 @@ import com.example.newsapp.domain.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
 import androidx.paging.Pager as Pager1
 
-class NewsRepositoryImpl (
+class NewsRepositoryImpl(
     private val newsApi: NewsApi,
     private val newsDao: NewsDao
-): NewsRepository{
+) : NewsRepository {
     override fun getNews(sources: List<String>): Flow<PagingData<Article>> {
-      return Pager1(
+        return Pager1(
             config = PagingConfig(pageSize = 10),
             pagingSourceFactory = {
                 NewsPagingSource(
@@ -28,18 +30,45 @@ class NewsRepositoryImpl (
     }
 
     override fun searchNews(searchQuery: String, sources: List<String>): Flow<PagingData<Article>> {
-     return Pager1(
-         config = PagingConfig(pageSize = 10),
-         pagingSourceFactory = {
-             SearchNewsPagingSource(
-                 searchQuery = searchQuery,
-                 newsApi = newsApi,
-                 source = sources.joinToString(separator = ",")
-             )
-         }
-     ).flow
+        return Pager1(
+            config = PagingConfig(pageSize = 10),
+            pagingSourceFactory = {
+                SearchNewsPagingSource(
+                    searchQuery = searchQuery,
+                    newsApi = newsApi,
+                    source = sources.joinToString(separator = ",")
+                )
+            }
+        ).flow
     }
 
+    override fun categoryNews(
+        category: String,
+        country: String
+    ): Flow<PagingData<Article>> {
+        return Pager1(
+            config = PagingConfig(pageSize = 6),
+            pagingSourceFactory = {
+                CategoryPagingSource(
+                    category = category,
+                    newsApi = newsApi,
+                    country = country
+                )
+            }
+        ).flow
+    }
+
+    override fun headlineNews( country: String): Flow<PagingData<Article>> {
+        return Pager1(
+            config = PagingConfig(pageSize = 3),
+            pagingSourceFactory = {
+                HeadlineNewsPagingSource(
+                    newsApi = newsApi,
+                    country = country
+                )
+            }
+        ).flow
+    }
     override suspend fun insertArticle(article: Article) {
         newsDao.insertArticle(article)
     }

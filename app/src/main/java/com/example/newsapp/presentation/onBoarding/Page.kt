@@ -13,18 +13,18 @@ data class Page(
 
 val pages = listOf(
     Page(
-        title = "loream>3" ,
-        description = "Ahmed",
-        image = R.drawable.ahmed
+        title = "Welcome to News" ,
+        description = "\" Discover the latest news from around the world.Stay informed with real -time updates and top stories tailored just for you.\"",
+        image = R.drawable.first
     ),
     Page(
-        title = "loreeam ",
-        description = "Umair",
-        image = R.drawable.umair
+        title = "Customize Your Feed",
+        description = "\" Choose topics that interest you, from sports to technology. Enjoy a personalized experience with news categories that matter most to you.  \"",
+        image = R.drawable.second
     ),
     Page(
-        title = "loreeam",
-        description = "Imran",
-        image = R.drawable.imran
+        title = "Stay Updated",
+        description = "\"Get real-time access to the latest headlines and stories. Stay informed with up-to-the-minute news on topics that matter to you. \" ",
+        image = R.drawable.third
     )
 )

@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.newsapp.ui.theme.CustomOrange
 
 
 @Composable
@@ -20,15 +21,13 @@ fun NewsButton(
 
 
     Button(onClick = {onCLick() }, colors = ButtonDefaults.buttonColors(
-        containerColor = Color.Blue,
+        containerColor = CustomOrange,
         contentColor = Color.White
     ),
         shape = RoundedCornerShape(size = 6.dp)
     ) {
         
-        Text(text = text, style = MaterialTheme.typography.labelMedium.copy(
-            fontWeight = FontWeight.SemiBold
-        ))
+        Text(text = text, style = MaterialTheme.typography.titleLarge)
 
     }
 }
@@ -46,7 +45,8 @@ fun NewsTextButton(  text : String,
         Text(text = text, style = MaterialTheme.typography.labelMedium.copy(
             fontWeight = FontWeight.SemiBold,
             color = Color.Black
-        ))
+        ),
+           color = Color.Black )
 
     }
 }

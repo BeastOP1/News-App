@@ -20,6 +20,7 @@ import com.example.newsapp.presentation.onBoarding.components.Dimens.MediumPaddi
 import com.example.newsapp.presentation.onBoarding.components.Dimens.MediumPadding2
 import com.example.newsapp.presentation.onBoarding.Page
 import com.example.newsapp.presentation.onBoarding.pages
+import com.example.newsapp.ui.theme.CustomOrange
 
 
 @Composable
@@ -42,15 +43,14 @@ fun OnBoardingPage(modifier: Modifier = Modifier  ,
         
         Text(text = page.title , modifier = Modifier.padding(horizontal = MediumPadding2) ,
             style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.Bold),
-            color = Color.Black
+            color = CustomOrange
             )
         Text(text = page.description , modifier = Modifier.padding(horizontal = MediumPadding2) ,
             style = MaterialTheme.typography.bodyMedium,
             color = Color.DarkGray
         )
     }
-    
-    
+
 }
 @Preview(showSystemUi = true)
 @Composable

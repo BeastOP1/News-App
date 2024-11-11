@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerDefaults
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
@@ -34,9 +35,10 @@ fun OnboardingScreen(
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
+        val scope = rememberCoroutineScope()
 
         val pagerState = rememberPagerState(initialPage = 0) {
-            pages.size
+            pages.distinct().size
         }
         val buttonState = remember {
             derivedStateOf {
@@ -49,23 +51,23 @@ fun OnboardingScreen(
             }
         }
 
+        HorizontalPager(
+            state = pagerState,
+            flingBehavior = PagerDefaults.flingBehavior(state = pagerState),
+            beyondBoundsPageCount = 1
+            ) {
 
-
-
-        HorizontalPager(state = pagerState) { index ->
+                index ->
             OnBoardingPage(page = pages[index])
 
-
         }
-
         Spacer(modifier = Modifier.weight(1f))
 
 
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = Dimens.MediumPadding2)
-                .navigationBarsPadding(),
+                .padding(horizontal = Dimens.MediumPadding2),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -79,7 +81,6 @@ fun OnboardingScreen(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(2.dp)
             ) {
-                val scope = rememberCoroutineScope()
                 if (buttonState.value[0].isNotEmpty()) {
 
                     NewsTextButton(text = buttonState.value[0], onCLick = {

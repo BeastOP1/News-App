@@ -8,7 +8,8 @@ interface NewsRepository {
 
     fun getNews(sources: List<String>) : Flow<PagingData<Article>>
     fun searchNews(searchQuery:String,sources: List<String>) : Flow<PagingData<Article>>
-
+    fun categoryNews(category: String,country: String): Flow<PagingData<Article>>
+    fun headlineNews(country: String): Flow<PagingData<Article>>
     suspend fun insertArticle(article: Article)
 
     suspend fun deleteArticle(article: Article)

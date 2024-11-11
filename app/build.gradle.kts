@@ -1,10 +1,13 @@
+
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.dagger.hilt.android")
+    alias(libs.plugins.kotlin.compose)
     kotlin("kapt")
     id("kotlin-parcelize")
-
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -63,6 +66,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.10")
+
     //
     implementation(libs.androidx.datastore.core.android)
     //
@@ -107,8 +112,17 @@ dependencies {
     val room_version = "2.6.1"
 
     implementation("androidx.room:room-runtime:$room_version")
-
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
 
+    //firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
+    implementation("com.google.firebase:firebase-analytics")
+    //authentication
+    implementation("com.google.firebase:firebase-auth")
+
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.1")
+
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0")
 }
+

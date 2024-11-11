@@ -13,14 +13,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.newsapp.presentation.onBoarding.components.Dimens.IndicatorSize
+import com.example.newsapp.ui.theme.CustomGray
+import com.example.newsapp.ui.theme.CustomOrange
 
 @Composable
 fun PageIndicator(
-    modifier: Modifier = Modifier ,
+    modifier: Modifier = Modifier,
     pageSize : Int,
     selectedPage: Int,
-    selectedColor : Color = Color.Blue,
-    unselectedColor : Color = Color.Gray
+    selectedColor : Color = CustomOrange,
+    unselectedColor : Color = CustomGray
                   ) {
 
     Row(

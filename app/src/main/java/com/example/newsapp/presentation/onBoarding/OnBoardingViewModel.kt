@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.newsapp.domain.usecase.app_entry.AppEntryUseCases
 import com.example.newsapp.presentation.onBoarding.OnBoardingEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,7 +27,7 @@ class OnBoardingViewModel @Inject constructor(
     }
 
     private fun saveAppEntry() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             appEntryUseCases.saveAppEntry()
         }
     }
