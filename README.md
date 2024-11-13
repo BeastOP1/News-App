@@ -8,7 +8,7 @@ A modern Android news app built with 𝗝𝗲𝘁𝗽𝗮𝗰𝗸 𝗖𝗼𝗺�
 𝗗𝗮𝘁𝗮 𝗦𝘁𝗼𝗿𝗮𝗴𝗲: User preferences and app settings stored securely using DataStore and SharedPreferences.
 𝗗𝗲𝗽𝗲𝗻𝗱𝗲𝗻𝗰𝘆 𝗜𝗻𝗷𝗲𝗰𝘁𝗶𝗼𝗻: Managed with Dagger Hilt for easier and scalable dependency injection.
 
-
+𝗙𝗼𝗿 𝘁𝗲𝘀𝘁 :-  https://drive.google.com/file/d/11R2X7NywCIl1JutJXYewjdw4X1JGabnH/view?usp=drive_link
 
 ![News Dark](https://github.com/user-attachments/assets/0574c147-8bdf-4cd0-b215-3fea16d0a0bb)
 
